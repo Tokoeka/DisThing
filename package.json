@@ -1,8 +1,8 @@
 {
-  "name": "kol-js-starter",
+  "name": "DisThing",
   "version": "1.0.0",
-  "description": "Example package for KoLmafia TypeScript scripts.",
-  "main": "KoLmafia/scripts/kol-js-starter/main-script-name.js",
+  "description": "Automate the Suburbs of Dis quest",
+  "main": "KoLmafia/scripts/DisThing.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm run build:types && npm run build:js",
@@ -34,19 +34,16 @@
     "kolmafia": "^1.3.0",
     "libram": "^0.4.1"
   },
-  "author": "Captain Scotch",
+  "author": "Asmodais",
   "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/docrostov/kol-js-starter.git"
-  },
+  "repository": "git+https://github.com/Tokoeka/DisThing.git",
   "keywords": [
     "KoLMafia",
     "JS",
     "TS"
   ],
   "bugs": {
-    "url": "https://github.com/docrostov/kol-js-starter/issues"
+    "url": "https://github.com/Tokoeka/DisThing/issues"
   },
-  "homepage": "https://github.com/docrostov/kol-js-starter#readme"
+  "homepage": "https://github.com/Tokoeka/DisThing#readme"
 }
