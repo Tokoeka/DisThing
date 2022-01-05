@@ -214,7 +214,7 @@ function killSecondBosses() {
 	const zone = $location`The Clumsiness Grove`
 	advMacroAA(
 		zone,
-		Macro.if_(`monstername "The Bat in the Spats"`, Macro.step(thugs)).step(clumGrov),
+		Macro.if_(`monstername "The Bat in the Spats"`, Macro.step(spats)).step(clumGrov),
 		() => itemAmount($item`vanity stone`) < 1
 	);
 
@@ -236,7 +236,6 @@ function killSecondBosses() {
 
 function killTheThing() {
 	have($familiar`Ms. Puck Man`) ? useFamiliar($familiar`Ms. Puck Man`) : useFamiliar($familiar`Levitating Potato`);
-	ensureFamWt();
 	macro = Macro.step(defaultKill);
 	macro.setAutoAttack();
 	visitUrl('suburbandis.php?action=altar&pwd');
