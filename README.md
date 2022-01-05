@@ -9,13 +9,27 @@ Curretly Requires the following specific IotMs / familiars / skills:
 * Disgeist
 * Red-Nosed Snapper
 * Funkslinging
+* Curse of Weaksauce
+* Empathy of the Newt
+* Leahs of Linguini
+* Blood Bond
+* Smooth Movements
+* Levitating Potato
 
 
 In addition, the following are not required but are useful:
 
-* Cartography (yet to be implemented)
-* Any Potato Like Familiar (yet to be implemented)
+* Horsery
+* Emotion Chip
+* Powerful Glove
+* Pocket Meteor Guide (For Deleveling)
+* Time-Spinner (For Deleveling)
+* Bottle of Lovebug Pheremones (Stunning/Delevelling)
+* Ms. Puck Man
 * Tattle
 * Torment Plant
 * Pinch Ghost 
 
+There are plans to make use of the following, but this has not yet been implemented:
+
+* Cartography (yet to be implemented)
