@@ -3927,85 +3927,6 @@ var StrictMacro = /*#__PURE__*/(/* unused pure expression or super */ null && (f
 
   return StrictMacro;
 }(Macro)));
-;// CONCATENATED MODULE: ./node_modules/libram/dist/resources/2019/Snapper.js
-function Snapper_slicedToArray(arr, i) { return Snapper_arrayWithHoles(arr) || Snapper_iterableToArrayLimit(arr, i) || Snapper_unsupportedIterableToArray(arr, i) || Snapper_nonIterableRest(); }
-
-function Snapper_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function Snapper_iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function Snapper_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function Snapper_toConsumableArray(arr) { return Snapper_arrayWithoutHoles(arr) || Snapper_iterableToArray(arr) || Snapper_unsupportedIterableToArray(arr) || Snapper_nonIterableSpread(); }
-
-function Snapper_nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function Snapper_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return Snapper_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return Snapper_arrayLikeToArray(o, minLen); }
-
-function Snapper_iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function Snapper_arrayWithoutHoles(arr) { if (Array.isArray(arr)) return Snapper_arrayLikeToArray(arr); }
-
-function Snapper_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-
-
-var familiar = Familiar.get("Red-Nosed Snapper");
-/**
- * Map of phylum to item that phylum drops.
- */
-
-var phylumItem = new Map([[Phylum.get("Beast"), Item.get("patch of extra-warm fur")], [Phylum.get("Bug"), Item.get("a bug's lymph")], [Phylum.get("Constellation"), Item.get("micronova")], [Phylum.get("Construct"), Item.get("industrial lubricant")], [Phylum.get("Demon"), Item.get("infernal snowball")], [Phylum.get("Dude"), Item.get("human musk")], [Phylum.get("Elemental"), Item.get("livid energy")], [Phylum.get("Elf"), Item.get("peppermint syrup")], [Phylum.get("Fish"), Item.get("fish sauce")], [Phylum.get("Goblin"), Item.get("guffin")], [Phylum.get("Hippy"), Item.get("organic potpourri")], [Phylum.get("Hobo"), Item.get("beggin' cologne")], [Phylum.get("Horror"), Item.get("powdered madness")], [Phylum.get("Humanoid"), Item.get("vial of humanoid growth hormone")], [Phylum.get("Mer-kin"), Item.get("Mer-kin eyedrops")], [Phylum.get("Orc"), Item.get("boot flask")], [Phylum.get("Penguin"), Item.get("envelope full of Meat")], [Phylum.get("Pirate"), Item.get("Shantix™")], [Phylum.get("Plant"), Item.get("goodberry")], [Phylum.get("Slime"), Item.get("extra-strength goo")], [Phylum.get("Undead"), Item.get("unfinished pleasure")], [Phylum.get("Weird"), Item.get("non-Euclidean angle]")]]);
-/**
- * Map of drop item to phylum it drops from.
- */
-
-var itemPhylum = new Map(Snapper_toConsumableArray(phylumItem).map(_ref => {
-  var _ref2 = Snapper_slicedToArray(_ref, 2),
-      phylum = _ref2[0],
-      item = _ref2[1];
-
-  return [item, phylum];
-}));
-/**
- * Return whether you have a Red-Nosed Snapper.
- * @returns True if you have a Red-Nosed Snapper, false otherwise.
- */
-
-function Snapper_have() {
-  return haveFamiliar(familiar);
-}
-/**
- * Get the phylum currently being tracked by the snapper.
- * @returns Tracked phylum, or null if no phylum tracked.
- */
-
-function getTrackedPhylum() {
-  return get("redSnapperPhylum");
-}
-/**
- * Set snapper tracking to a certain phylum.
- * @param phylum Phylum to track.
- */
-
-function trackPhylum(phylum) {
-  var currentFamiliar = (0,external_kolmafia_namespaceObject.myFamiliar)();
-
-  try {
-    (0,external_kolmafia_namespaceObject.useFamiliar)(familiar);
-    (0,external_kolmafia_namespaceObject.cliExecute)("snapper ".concat(phylum));
-  } finally {
-    (0,external_kolmafia_namespaceObject.useFamiliar)(currentFamiliar);
-  }
-}
-/**
- * Get progress to next snapper drop.
- * @returns Number of fights completed (out of 11) to reach next drop.
- */
-
-function getProgress() {
-  return get("redSnapperProgress");
-}
 ;// CONCATENATED MODULE: ./src/Dis-macros.ts
 
 var delevel = Macro.skill("curse of weaksauce").trySkill("micrometeor").tryItem("time-spinner").trySkill("summon love gnats");
@@ -4014,7 +3935,7 @@ var easyFight = Macro.trySkill("extract").trySkill("sing along");
 var defaultKill = Macro.step(delevel).step(easyFight).attack().repeat();
 var thorax = Macro.item("clumsiness bark").repeat();
 var spats = Macro.item(["clumsiness bark", "clumsiness bark"]).repeat();
-var pinch = Macro.if_("gotjump", Macro.attack()).while_("hpabove 1", Macro.item("jar full of wind").attack()).attack();
+var pinch = Macro.if_("gotjump", Macro.attack()).while_("monsterhpabove 1", Macro.item("jar full of wind").attack()).attack();
 var mammon = Macro.item(["dangerous jerkcicle", "dangerous jerkcicle"]).repeat();
 var snitch = Macro.while_("!pastround 5", Macro.item(["dangerous jerkcicle", "dangerous jerkcicle"])).attack().repeat();
 var thugs = Macro.item(["jar full of wind", "jar full of wind"]).repeat();
@@ -4200,11 +4121,12 @@ function uniform() {
   Outfit.doYourBest(new Map([[$slot(Dis_Outfit_templateObject6 || (Dis_Outfit_templateObject6 = Dis_Outfit_taggedTemplateLiteral(["hat"]))), template_string_$items(Dis_Outfit_templateObject7 || (Dis_Outfit_templateObject7 = Dis_Outfit_taggedTemplateLiteral(["Xiblaxian stealth cowl, very pointy crown, porkpie-mounted popper, Daylight Shavings Helmet"])))], [$slot(Dis_Outfit_templateObject8 || (Dis_Outfit_templateObject8 = Dis_Outfit_taggedTemplateLiteral(["shirt"]))), template_string_$items(Dis_Outfit_templateObject9 || (Dis_Outfit_templateObject9 = Dis_Outfit_taggedTemplateLiteral(["Xiblaxian stealth vest, camouflage T-shirt, Stephen's Lab Coat"])))], [$slot(Dis_Outfit_templateObject10 || (Dis_Outfit_templateObject10 = Dis_Outfit_taggedTemplateLiteral(["pants"]))), template_string_$items(Dis_Outfit_templateObject11 || (Dis_Outfit_templateObject11 = Dis_Outfit_taggedTemplateLiteral(["Xiblaxian stealth trousers, pantsgiving"])))], [$slot(_templateObject12 || (_templateObject12 = Dis_Outfit_taggedTemplateLiteral(["weapon"]))), template_string_$item(_templateObject13 || (_templateObject13 = Dis_Outfit_taggedTemplateLiteral(["Fourth of May Cosplay Saber"])))], [$slot(_templateObject14 || (_templateObject14 = Dis_Outfit_taggedTemplateLiteral(["off-hand"]))), template_string_$items(_templateObject15 || (_templateObject15 = Dis_Outfit_taggedTemplateLiteral(["KoL Con 13 Snowglobe, familiar scrapbook"])))], [$slot(_templateObject16 || (_templateObject16 = Dis_Outfit_taggedTemplateLiteral(["acc1"]))), template_string_$item(_templateObject17 || (_templateObject17 = Dis_Outfit_taggedTemplateLiteral(["Lucky Gold Ring"])))], [$slot(_templateObject18 || (_templateObject18 = Dis_Outfit_taggedTemplateLiteral(["acc2"]))), template_string_$item(_templateObject19 || (_templateObject19 = Dis_Outfit_taggedTemplateLiteral(["Mr. Screege's spectacles"])))], [$slot(_templateObject20 || (_templateObject20 = Dis_Outfit_taggedTemplateLiteral(["acc3"]))), template_string_$item(_templateObject21 || (_templateObject21 = Dis_Outfit_taggedTemplateLiteral(["Mr. Cheeng's spectacles"])))], [$slot(_templateObject22 || (_templateObject22 = Dis_Outfit_taggedTemplateLiteral(["back"]))), template_string_$item(_templateObject23 || (_templateObject23 = Dis_Outfit_taggedTemplateLiteral(["protonic accelerator pack"])))]])).dress();
 }
 ;// CONCATENATED MODULE: ./src/main.ts
-var main_templateObject, main_templateObject2, main_templateObject3, main_templateObject4, main_templateObject5, main_templateObject6, main_templateObject7, main_templateObject8, main_templateObject9, main_templateObject10, main_templateObject11, main_templateObject12, main_templateObject13, main_templateObject14, main_templateObject15, main_templateObject16, main_templateObject17, main_templateObject18, main_templateObject19, main_templateObject20, main_templateObject21, main_templateObject22, main_templateObject23, _templateObject24, _templateObject25, _templateObject26, _templateObject27, _templateObject28, _templateObject29, _templateObject30, _templateObject31, _templateObject32, _templateObject33, _templateObject34, _templateObject35, _templateObject36, _templateObject37, _templateObject38, _templateObject39, _templateObject40, _templateObject41, _templateObject42, _templateObject43, _templateObject44, _templateObject45, _templateObject46, _templateObject47, _templateObject48, _templateObject49, _templateObject50, _templateObject51, _templateObject52, _templateObject53, _templateObject54, _templateObject55;
+var main_templateObject, main_templateObject2, main_templateObject3, main_templateObject4, main_templateObject5, main_templateObject6, main_templateObject7, main_templateObject8, main_templateObject9, main_templateObject10, main_templateObject11, main_templateObject12, main_templateObject13, main_templateObject14, main_templateObject15, main_templateObject16, main_templateObject17, main_templateObject18, main_templateObject19, main_templateObject20, main_templateObject21, main_templateObject22, main_templateObject23, _templateObject24, _templateObject25, _templateObject26, _templateObject27, _templateObject28, _templateObject29, _templateObject30, _templateObject31, _templateObject32, _templateObject33, _templateObject34, _templateObject35, _templateObject36, _templateObject37, _templateObject38, _templateObject39, _templateObject40, _templateObject41, _templateObject42, _templateObject43, _templateObject44, _templateObject45, _templateObject46, _templateObject47, _templateObject48, _templateObject49, _templateObject50, _templateObject51, _templateObject52, _templateObject53, _templateObject54, _templateObject55, _templateObject56, _templateObject57, _templateObject58, _templateObject59, _templateObject60, _templateObject61, _templateObject62, _templateObject63, _templateObject64, _templateObject65;
 
 function main_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
+ //import { trackPhylum } from "libram/dist/resources/2019/Snapper";
 
 
 
@@ -4255,7 +4177,7 @@ function mapMacro(location, monster, macro) {
 }
 
 function prepBuffs() {
-  main_ensureEffect($effect(main_templateObject3 || (main_templateObject3 = main_taggedTemplateLiteral(["Dis Abled"]))));
+  main_ensureEffect($effect(main_templateObject3 || (main_templateObject3 = main_taggedTemplateLiteral(["Dis Abled"]))), 30);
   main_ensureEffect($effect(main_templateObject4 || (main_templateObject4 = main_taggedTemplateLiteral(["Empathy"]))), 30);
   main_ensureEffect($effect(main_templateObject5 || (main_templateObject5 = main_taggedTemplateLiteral(["Leash of Linguini"]))), 30);
   main_ensureEffect($effect(main_templateObject6 || (main_templateObject6 = main_taggedTemplateLiteral(["Blood Bond"]))), 30);
@@ -4288,7 +4210,8 @@ function ensureNonCom() {
   var improvements = [() => {
     if (!have($effect(main_templateObject12 || (main_templateObject12 = main_taggedTemplateLiteral(["Gummed Shoes"]))))) {
       //retrieveItem($item`shoe gum`)
-      (0,external_kolmafia_namespaceObject.buy)(template_string_$item(main_templateObject13 || (main_templateObject13 = main_taggedTemplateLiteral(["shoe gum"]))), 2500);
+      //retrieveItem($item`shoe gum`);
+      (0,external_kolmafia_namespaceObject.buy)(template_string_$item(main_templateObject13 || (main_templateObject13 = main_taggedTemplateLiteral(["shoe gum"]))), 1, 2500);
 
       if (have(template_string_$item(main_templateObject14 || (main_templateObject14 = main_taggedTemplateLiteral(["shoe gum"]))))) {
         main_ensureEffect($effect(main_templateObject15 || (main_templateObject15 = main_taggedTemplateLiteral(["Gummed Shoes"]))));
@@ -4296,22 +4219,21 @@ function ensureNonCom() {
     }
   }, () => {
     if (!have($effect(main_templateObject16 || (main_templateObject16 = main_taggedTemplateLiteral(["Become Superficially Interested"]))))) {
-      (0,external_kolmafia_namespaceObject.retrieveItem)(template_string_$item(main_templateObject17 || (main_templateObject17 = main_taggedTemplateLiteral(["shoe gum"]))));
-      (0,external_kolmafia_namespaceObject.buy)(template_string_$item(main_templateObject18 || (main_templateObject18 = main_taggedTemplateLiteral(["Daily Affirmation: Be Superficially interested"]))), 5000);
+      (0,external_kolmafia_namespaceObject.buy)(1, template_string_$item(main_templateObject17 || (main_templateObject17 = main_taggedTemplateLiteral(["Daily Affirmation: Be Superficially interested"]))), 5000);
 
-      if (have(template_string_$item(main_templateObject19 || (main_templateObject19 = main_taggedTemplateLiteral(["Daily Affirmation: Be Superficially interested"]))))) {
-        main_ensureEffect($effect(main_templateObject20 || (main_templateObject20 = main_taggedTemplateLiteral(["Become Superficially Interested"]))));
+      if (have(template_string_$item(main_templateObject18 || (main_templateObject18 = main_taggedTemplateLiteral(["Daily Affirmation: Be Superficially interested"]))))) {
+        main_ensureEffect($effect(main_templateObject19 || (main_templateObject19 = main_taggedTemplateLiteral(["Become Superficially Interested"]))));
       }
     }
   }, () => {
-    if (!have($effect(main_templateObject21 || (main_templateObject21 = main_taggedTemplateLiteral(["Patent Invisibility"]))))) {
-      (0,external_kolmafia_namespaceObject.buy)(1, template_string_$item(main_templateObject22 || (main_templateObject22 = main_taggedTemplateLiteral(["patent invisibility tonic"]))), 6500);
-      (0,external_kolmafia_namespaceObject.use)(1, template_string_$item(main_templateObject23 || (main_templateObject23 = main_taggedTemplateLiteral(["patent invisibility tonic"]))));
+    if (!have($effect(main_templateObject20 || (main_templateObject20 = main_taggedTemplateLiteral(["Patent Invisibility"]))))) {
+      (0,external_kolmafia_namespaceObject.buy)(template_string_$item(main_templateObject21 || (main_templateObject21 = main_taggedTemplateLiteral(["patent invisibility tonic"]))), 1, 6500);
+      (0,external_kolmafia_namespaceObject.use)(1, template_string_$item(main_templateObject22 || (main_templateObject22 = main_taggedTemplateLiteral(["patent invisibility tonic"]))));
     }
   }, () => {
-    if (!have($effect(_templateObject24 || (_templateObject24 = main_taggedTemplateLiteral(["Predjudicetidigitation"]))))) {
-      (0,external_kolmafia_namespaceObject.buy)(3, template_string_$item(_templateObject25 || (_templateObject25 = main_taggedTemplateLiteral(["worst candy"]))), 10000);
-      (0,external_kolmafia_namespaceObject.use)(3, template_string_$item(_templateObject26 || (_templateObject26 = main_taggedTemplateLiteral(["worst candy"]))));
+    if (!have($effect(main_templateObject23 || (main_templateObject23 = main_taggedTemplateLiteral(["Predjudicetidigitation"]))))) {
+      (0,external_kolmafia_namespaceObject.buy)(3, template_string_$item(_templateObject24 || (_templateObject24 = main_taggedTemplateLiteral(["worst candy"]))), 10000);
+      (0,external_kolmafia_namespaceObject.use)(3, template_string_$item(_templateObject25 || (_templateObject25 = main_taggedTemplateLiteral(["worst candy"]))));
     }
   }];
 
@@ -4322,70 +4244,113 @@ function ensureNonCom() {
 }
 
 function prepFirstBosses() {
-  (0,external_kolmafia_namespaceObject.useFamiliar)(template_string_$familiar(_templateObject27 || (_templateObject27 = main_taggedTemplateLiteral(["disgeist"]))));
-  var zone = $location(_templateObject28 || (_templateObject28 = main_taggedTemplateLiteral(["The Maelstrom of Lovers"])));
-  advMacroAA(zone, Macro.step(maelLove), () => property_get("lastEncounter") !== "To Get Groped or Get Mugged?");
-  zone = $location(_templateObject29 || (_templateObject29 = main_taggedTemplateLiteral(["The Clumsiness Grove"])));
-  advMacroAA(zone, Macro.step(clumGrov), () => property_get("lastEncounter") !== "You Must Choose Your Destruction!");
-  zone = $location(_templateObject30 || (_templateObject30 = main_taggedTemplateLiteral(["The Glacier of Jerks"])));
-  advMacroAA(zone, Macro.step(glacJerk), () => property_get("lastEncounter") !== "Some Sounds Most Unnerving");
+  if (!property_get("_Dis1stNCs")) {
+    (0,external_kolmafia_namespaceObject.useFamiliar)(template_string_$familiar(_templateObject26 || (_templateObject26 = main_taggedTemplateLiteral(["disgeist"]))));
+    var zone = $location(_templateObject27 || (_templateObject27 = main_taggedTemplateLiteral(["The Maelstrom of Lovers"])));
+    advMacroAA(zone, Macro.step(maelLove), () => property_get("lastEncounter") !== "To Get Groped or Get Mugged?");
+    zone = $location(_templateObject28 || (_templateObject28 = main_taggedTemplateLiteral(["The Clumsiness Grove"])));
+    advMacroAA(zone, Macro.step(clumGrov), () => property_get("lastEncounter") !== "You Must Choose Your Destruction!");
+    zone = $location(_templateObject29 || (_templateObject29 = main_taggedTemplateLiteral(["The Glacier of Jerks"])));
+    advMacroAA(zone, Macro.step(glacJerk), () => property_get("lastEncounter") !== "Some Sounds Most Unnerving");
+    _set("_Dis1stNCs", true);
+  }
 }
 
 function killFirstBosses() {
-  (0,external_kolmafia_namespaceObject.useFamiliar)(template_string_$familiar(_templateObject31 || (_templateObject31 = main_taggedTemplateLiteral(["Red-Nosed Snapper"]))));
-  trackPhylum($phylum(_templateObject32 || (_templateObject32 = main_taggedTemplateLiteral(["humanoid"]))));
-  var zone = $location(_templateObject33 || (_templateObject33 = main_taggedTemplateLiteral(["The Maelstrom of Lovers"])));
-  advMacroAA(zone, Macro.if_("monstername \"The Terrible Pinch\"", Macro.step(pinch)).step(maelLove), () => (0,external_kolmafia_namespaceObject.itemAmount)(template_string_$item(_templateObject34 || (_templateObject34 = main_taggedTemplateLiteral(["lecherous stone"])))) < 1);
-  trackPhylum($phylum(_templateObject35 || (_templateObject35 = main_taggedTemplateLiteral(["beast"]))));
-  zone = $location(_templateObject36 || (_templateObject36 = main_taggedTemplateLiteral(["The Clumsiness Grove"])));
-  advMacroAA(zone, Macro.if_("monstername \"The Thorax\"", Macro.step(thorax)).step(clumGrov), () => (0,external_kolmafia_namespaceObject.itemAmount)(template_string_$item(_templateObject37 || (_templateObject37 = main_taggedTemplateLiteral(["furious stone"])))) < 1);
-  zone = $location(_templateObject38 || (_templateObject38 = main_taggedTemplateLiteral(["The Glacier of Jerks"])));
-  advMacroAA(zone, Macro.if_("monstername \"Mammon the Elephant\"", Macro.step(mammon)).step(glacJerk), () => (0,external_kolmafia_namespaceObject.itemAmount)(template_string_$item(_templateObject39 || (_templateObject39 = main_taggedTemplateLiteral(["avarice stone"])))) < 1);
+  (0,external_kolmafia_namespaceObject.useFamiliar)(template_string_$familiar(_templateObject30 || (_templateObject30 = main_taggedTemplateLiteral(["Red-Nosed Snapper"]))));
+  var zone = $location(_templateObject31 || (_templateObject31 = main_taggedTemplateLiteral(["The Maelstrom of Lovers"]))); //trackPhylum($phylum`humanoid`);
+
+  if ((0,external_kolmafia_namespaceObject.itemAmount)(template_string_$item(_templateObject32 || (_templateObject32 = main_taggedTemplateLiteral(["lecherous stone"])))) < 1) {
+    (0,external_kolmafia_namespaceObject.cliExecute)("snapper humanoid");
+    advMacroAA(zone, Macro.if_("monstername \"The Terrible Pinch\"", Macro.step(pinch)).step(maelLove), () => (0,external_kolmafia_namespaceObject.itemAmount)(template_string_$item(_templateObject33 || (_templateObject33 = main_taggedTemplateLiteral(["lecherous stone"])))) < 1, () => main_ensureEffect($effect(_templateObject34 || (_templateObject34 = main_taggedTemplateLiteral(["Dis Abled"])))));
+  } //Snapper.trackPhylum($phylum`beast`);
+
+
+  (0,external_kolmafia_namespaceObject.cliExecute)("snapper beast");
+  zone = $location(_templateObject35 || (_templateObject35 = main_taggedTemplateLiteral(["The Clumsiness Grove"])));
+
+  if ((0,external_kolmafia_namespaceObject.itemAmount)(template_string_$item(_templateObject36 || (_templateObject36 = main_taggedTemplateLiteral(["furious stone"])))) < 1) {
+    advMacroAA(zone, Macro.if_("monstername \"The Thorax\"", Macro.step(thorax)).step(clumGrov), () => (0,external_kolmafia_namespaceObject.itemAmount)(template_string_$item(_templateObject37 || (_templateObject37 = main_taggedTemplateLiteral(["furious stone"])))) < 1, () => main_ensureEffect($effect(_templateObject38 || (_templateObject38 = main_taggedTemplateLiteral(["Dis Abled"])))));
+  }
+
+  zone = $location(_templateObject39 || (_templateObject39 = main_taggedTemplateLiteral(["The Glacier of Jerks"])));
+
+  if ((0,external_kolmafia_namespaceObject.itemAmount)(template_string_$item(_templateObject40 || (_templateObject40 = main_taggedTemplateLiteral(["avarice stone"])))) < 1) {
+    advMacroAA(zone, Macro.if_("monstername \"Mammon the Elephant\"", Macro.step(mammon)).step(glacJerk), () => (0,external_kolmafia_namespaceObject.itemAmount)(template_string_$item(_templateObject41 || (_templateObject41 = main_taggedTemplateLiteral(["avarice stone"])))) < 1, () => main_ensureEffect($effect(_templateObject42 || (_templateObject42 = main_taggedTemplateLiteral(["Dis Abled"])))));
+  }
 }
 
 function prepSecondBosses() {
-  ensureNonCom();
-  (0,external_kolmafia_namespaceObject.useFamiliar)(template_string_$familiar(_templateObject40 || (_templateObject40 = main_taggedTemplateLiteral(["disgeist"]))));
-  var zone = $location(_templateObject41 || (_templateObject41 = main_taggedTemplateLiteral(["The Maelstrom of Lovers"])));
-  advMacroAA(zone, Macro.step(maelLove), () => property_get("lastEncounter") !== "A Choice to be Made");
-  zone = $location(_templateObject42 || (_templateObject42 = main_taggedTemplateLiteral(["The Clumsiness Grove"])));
-  advMacroAA(zone, Macro.step(clumGrov), () => property_get("lastEncounter") !== "A Test of Your Mettle");
-  zone = $location(_templateObject43 || (_templateObject43 = main_taggedTemplateLiteral(["The Glacier of Jerks"])));
-  advMacroAA(zone, Macro.step(glacJerk), () => property_get("lastEncounter") !== "One More Demon to Slay");
+  if (!property_get("_Dis2ndNCs")) {
+    ensureNonCom();
+    (0,external_kolmafia_namespaceObject.useFamiliar)(template_string_$familiar(_templateObject43 || (_templateObject43 = main_taggedTemplateLiteral(["disgeist"]))));
+    var zone = $location(_templateObject44 || (_templateObject44 = main_taggedTemplateLiteral(["The Maelstrom of Lovers"])));
+    advMacroAA(zone, Macro.step(maelLove), () => property_get("lastEncounter") !== "A Choice to be Made", () => main_ensureEffect($effect(_templateObject45 || (_templateObject45 = main_taggedTemplateLiteral(["Dis Abled"])))));
+    zone = $location(_templateObject46 || (_templateObject46 = main_taggedTemplateLiteral(["The Clumsiness Grove"])));
+    advMacroAA(zone, Macro.step(clumGrov), () => property_get("lastEncounter") !== "A Test of Your Mettle", () => main_ensureEffect($effect(_templateObject47 || (_templateObject47 = main_taggedTemplateLiteral(["Dis Abled"])))));
+    zone = $location(_templateObject48 || (_templateObject48 = main_taggedTemplateLiteral(["The Glacier of Jerks"])));
+    advMacroAA(zone, Macro.step(glacJerk), () => property_get("lastEncounter") !== "One More Demon to Slay", () => main_ensureEffect($effect(_templateObject49 || (_templateObject49 = main_taggedTemplateLiteral(["Dis Abled"])))));
+    _set("_Dis2ndNCs", true);
+  }
 }
 
 function killSecondBosses() {
-  (0,external_kolmafia_namespaceObject.useFamiliar)(template_string_$familiar(_templateObject44 || (_templateObject44 = main_taggedTemplateLiteral(["Red-Nosed Snapper"]))));
-  trackPhylum($phylum(_templateObject45 || (_templateObject45 = main_taggedTemplateLiteral(["beast"]))));
-  var zone = $location(_templateObject46 || (_templateObject46 = main_taggedTemplateLiteral(["The Clumsiness Grove"])));
-  advMacroAA(zone, Macro.if_("monstername \"The Bat in the Spats\"", Macro.step(spats)).step(clumGrov), () => (0,external_kolmafia_namespaceObject.itemAmount)(template_string_$item(_templateObject47 || (_templateObject47 = main_taggedTemplateLiteral(["vanity stone"])))) < 1);
-  zone = $location(_templateObject48 || (_templateObject48 = main_taggedTemplateLiteral(["The Glacier of Jerks"])));
-  advMacroAA(zone, Macro.if_("monstername \"The Large-Bellied Snitch\"", Macro.step(snitch)).step(glacJerk), () => (0,external_kolmafia_namespaceObject.itemAmount)(template_string_$item(_templateObject49 || (_templateObject49 = main_taggedTemplateLiteral(["gluttonous stone"])))) < 1);
-  trackPhylum($phylum(_templateObject50 || (_templateObject50 = main_taggedTemplateLiteral(["humanoid"]))));
-  zone = $location(_templateObject51 || (_templateObject51 = main_taggedTemplateLiteral(["The Maelstrom of Lovers"])));
-  advMacroAA(zone, Macro.if_("monstername \"Thug 1 and Thug 2\"", Macro.step(thugs)).step(maelLove), () => (0,external_kolmafia_namespaceObject.itemAmount)(template_string_$item(_templateObject52 || (_templateObject52 = main_taggedTemplateLiteral(["jealousy stone"])))) < 1);
+  (0,external_kolmafia_namespaceObject.useFamiliar)(template_string_$familiar(_templateObject50 || (_templateObject50 = main_taggedTemplateLiteral(["Red-Nosed Snapper"])))); //Snapper.trackPhylum($phylum`beast`);
+
+  (0,external_kolmafia_namespaceObject.cliExecute)("snapper beast");
+  var zone = $location(_templateObject51 || (_templateObject51 = main_taggedTemplateLiteral(["The Clumsiness Grove"])));
+
+  if ((0,external_kolmafia_namespaceObject.itemAmount)(template_string_$item(_templateObject52 || (_templateObject52 = main_taggedTemplateLiteral(["vanity stone"])))) < 1) {
+    advMacroAA(zone, Macro.if_("monstername \"The Bat in the Spats\"", Macro.step(spats)).step(clumGrov), () => (0,external_kolmafia_namespaceObject.itemAmount)(template_string_$item(_templateObject53 || (_templateObject53 = main_taggedTemplateLiteral(["vanity stone"])))) < 1, () => main_ensureEffect($effect(_templateObject54 || (_templateObject54 = main_taggedTemplateLiteral(["Dis Abled"])))));
+  }
+
+  zone = $location(_templateObject55 || (_templateObject55 = main_taggedTemplateLiteral(["The Glacier of Jerks"])));
+
+  if ((0,external_kolmafia_namespaceObject.itemAmount)(template_string_$item(_templateObject56 || (_templateObject56 = main_taggedTemplateLiteral(["gluttonous stone"])))) < 1) {
+    advMacroAA(zone, Macro.if_("monstername \"The Large-Bellied Snitch\"", Macro.step(snitch)).step(glacJerk), () => (0,external_kolmafia_namespaceObject.itemAmount)(template_string_$item(_templateObject57 || (_templateObject57 = main_taggedTemplateLiteral(["gluttonous stone"])))) < 1, () => main_ensureEffect($effect(_templateObject58 || (_templateObject58 = main_taggedTemplateLiteral(["Dis Abled"])))));
+  } //trackPhylum($phylum`humanoid`);
+
+
+  (0,external_kolmafia_namespaceObject.cliExecute)("snapper humanoid");
+  zone = $location(_templateObject59 || (_templateObject59 = main_taggedTemplateLiteral(["The Maelstrom of Lovers"])));
+
+  if ((0,external_kolmafia_namespaceObject.itemAmount)(template_string_$item(_templateObject60 || (_templateObject60 = main_taggedTemplateLiteral(["jealousy stone"])))) < 1) {
+    advMacroAA(zone, Macro.if_("monstername \"Thug 1 and Thug 2\"", Macro.step(thugs)).step(maelLove), () => (0,external_kolmafia_namespaceObject.itemAmount)(template_string_$item(_templateObject61 || (_templateObject61 = main_taggedTemplateLiteral(["jealousy stone"])))) < 1, () => main_ensureEffect($effect(_templateObject62 || (_templateObject62 = main_taggedTemplateLiteral(["Dis Abled"])))));
+  }
+
+  _set("_DisThingReady", true);
 }
 
 function killTheThing() {
-  have(template_string_$familiar(_templateObject53 || (_templateObject53 = main_taggedTemplateLiteral(["Ms. Puck Man"])))) ? (0,external_kolmafia_namespaceObject.useFamiliar)(template_string_$familiar(_templateObject54 || (_templateObject54 = main_taggedTemplateLiteral(["Ms. Puck Man"])))) : (0,external_kolmafia_namespaceObject.useFamiliar)(template_string_$familiar(_templateObject55 || (_templateObject55 = main_taggedTemplateLiteral(["Levitating Potato"]))));
+  have(template_string_$familiar(_templateObject63 || (_templateObject63 = main_taggedTemplateLiteral(["Ms. Puck Man"])))) ? (0,external_kolmafia_namespaceObject.useFamiliar)(template_string_$familiar(_templateObject64 || (_templateObject64 = main_taggedTemplateLiteral(["Ms. Puck Man"])))) : (0,external_kolmafia_namespaceObject.useFamiliar)(template_string_$familiar(_templateObject65 || (_templateObject65 = main_taggedTemplateLiteral(["Levitating Potato"]))));
   var macro = Macro.step(defaultKill);
-  macro.setAutoAttack();
-  (0,external_kolmafia_namespaceObject.visitUrl)('suburbandis.php?action=altar&pwd');
-  (0,external_kolmafia_namespaceObject.runChoice)(1);
+  macro.setAutoAttack(); //visitUrl('suburbandis.php?action=altar&pwd');
+
+  (0,external_kolmafia_namespaceObject.visitUrl)("suburbandis.php?pwd&action=dothis");
   (0,external_kolmafia_namespaceObject.runCombat)(macro.toString());
+  _set("lastThingKill", (0,external_kolmafia_namespaceObject.myAscensions)());
 }
 
 function main() {
+  if (property_get("lastThingKill") == (0,external_kolmafia_namespaceObject.myAscensions)()) {
+    throw "You have already killed The Thing With No Name this ascension";
+  }
+
   (0,external_kolmafia_namespaceObject.cliExecute)("ccs twiddle");
-  uniform();
-  prepBuffs();
-  ensureItems();
-  ensureNonCom();
-  prepFirstBosses();
-  killFirstBosses();
-  prepSecondBosses();
-  killSecondBosses();
-  killTheThing();
+
+  if (property_get("_DisThingReady")) {
+    killTheThing();
+  } else {
+    uniform();
+    prepBuffs();
+    ensureItems();
+    ensureNonCom();
+    prepFirstBosses();
+    killFirstBosses();
+    prepSecondBosses();
+    killSecondBosses();
+    killTheThing();
+  }
 }
 })();
 
