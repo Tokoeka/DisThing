@@ -7,7 +7,7 @@ export const delevel = Macro.skill("curse of weaksauce")
 
 export const candyblast = Macro.while_(
     '!match "Hey, some of it is even intact afterwards!"',
-    Macro.tryskill("candyblast")
+    Macro.trySkill("candyblast")
 );
 
 export const easyFight = Macro.trySkill("extract").trySkill("sing along");
@@ -15,9 +15,9 @@ export const defaultKill = Macro.step(delevel).step(easyFight).attack().repeat()
 
 export const thorax = Macro.item(`clumsiness bark`).repeat();
 export const spats = Macro.item([`clumsiness bark`, `clumsiness bark`]).repeat();
-export const pinch = Macro.if_(`gotjump`, Macro.attack()).while(`hpabove 1`, Macro.item(`jar full of wind`).attack()).attack();
+export const pinch = Macro.if_(`gotjump`, Macro.attack()).while_(`hpabove 1`, Macro.item(`jar full of wind`).attack()).attack();
 export const mammon = Macro.item([`dangerous jerkcicle`, `dangerous jerkcicle`]).repeat();
-export const snitch = Macro.while_(`!pastround 5`, Macro.item([`dangerous jerkcicle`, `dangerous jerkcicle`])).attack();
+export const snitch = Macro.while_(`!pastround 5`, Macro.item([`dangerous jerkcicle`, `dangerous jerkcicle`])).attack().repeat();
 export const thugs = Macro.item([`jar full of wind`, `jar full of wind`]).repeat();
 
 export const clumGrov = Macro.step(delevel).trySkill(`Torment Plant`).step(easyFight).attack().repeat();

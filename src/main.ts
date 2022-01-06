@@ -20,8 +20,10 @@ import {
   runCombat,
   runChoice,
   setAutoAttack,
+  toUrl,
   retrieveItem,
   use,
+  useSkill,
   visitUrl,
   count,
   itemAmount,
@@ -30,7 +32,7 @@ import {
 import { $coinmaster, $effect, $item, $items, $location, $monster, $skill, $phylum, $slot, get, have, set, Macro, $familiar, Snapper } from "libram";
 import { item } from "libram/dist/resources/2020/Guzzlr";
 import { delevel, defaultKill, easyFight, thorax, spats, pinch, mammon, snitch, thugs, clumGrov, maelLove, glacJerk } from "./Dis-macros";
-import uniform from "./outfits";
+import uniform from "./Dis-Outfit";
 
 function ensureEffect(ef: Effect, turns = 1): void {
   //stolen directly from bean
@@ -77,6 +79,7 @@ export function mapMacro(location: Location, monster: Monster, macro: Macro): vo
 }
 
 function prepBuffs() {
+	ensureEffect($effect`Dis Abled`);
 	ensureEffect($effect`Empathy`, 30);
     ensureEffect($effect`Leash of Linguini`, 30);
     ensureEffect($effect`Blood Bond`, 30);
@@ -126,6 +129,18 @@ function ensureNonCom() {
 					ensureEffect($effect`Become Superficially Interested`);
 				}
             }
+		},
+		() => {
+			if (!have($effect`Patent Invisibility`)) {
+				buy(1, $item`patent invisibility tonic`, 6500);
+				use(1, $item`patent invisibility tonic`);
+			}
+		},
+		() => {
+			if (!have($effect`Predjudicetidigitation`)) {
+				buy(3, $item`worst candy`, 10000);
+				use(3, $item`worst candy`);
+			}
 		}
     ];
 	for (const improvement of improvements) {
@@ -135,21 +150,21 @@ function ensureNonCom() {
 
 function prepFirstBosses() {
 	useFamiliar($familiar`disgeist`);
-	const zone = $location`The Maelstrom of Lovers`
+	let zone = $location`The Maelstrom of Lovers`
 	advMacroAA(
 		zone,
 		Macro.step(maelLove),
 		() => get(`lastEncounter`) !== `To Get Groped or Get Mugged?`
 	);
 
-	const zone = $location`The Clumsiness Grove`
+	zone = $location`The Clumsiness Grove`
 	advMacroAA(
 		zone,
 		Macro.step(clumGrov),
 		() => get(`lastEncounter`) !== `You Must Choose Your Destruction!`
 	);
 
-	const zone = $location`The Glacier of Jerks`
+	zone = $location`The Glacier of Jerks`
 	advMacroAA(
 		zone,
 		Macro.step(glacJerk),
@@ -160,7 +175,7 @@ function prepFirstBosses() {
 function killFirstBosses() {
 	useFamiliar($familiar`Red-Nosed Snapper`);
 	Snapper.trackPhylum($phylum`humanoid`);
-	const zone = $location`The Maelstrom of Lovers`
+	let zone = $location`The Maelstrom of Lovers`
 	advMacroAA(
 		zone,
 		Macro.if_(`monstername "The Terrible Pinch"`, Macro.step(pinch)).step(maelLove),
@@ -168,14 +183,14 @@ function killFirstBosses() {
 	);
 	
 	Snapper.trackPhylum($phylum`beast`)
-	const zone = $location`The Clumsiness Grove`
+	zone = $location`The Clumsiness Grove`
 	advMacroAA(
 		zone,
 		Macro.if_(`monstername "The Thorax"`, Macro.step(thorax)).step(clumGrov),
 		() => itemAmount($item`furious stone`) < 1
 	);
 
-	const zone = $location`The Glacier of Jerks`
+	zone = $location`The Glacier of Jerks`
 	advMacroAA(
 		zone,
 		Macro.if_(`monstername "Mammon the Elephant"`, Macro.step(mammon)).step(glacJerk),
@@ -186,21 +201,21 @@ function killFirstBosses() {
 function prepSecondBosses() {
 	ensureNonCom();
 	useFamiliar($familiar`disgeist`);
-	const zone = $location`The Maelstrom of Lovers`
+	let zone = $location`The Maelstrom of Lovers`
 	advMacroAA(
 		zone,
 		Macro.step(maelLove),
 		() => get(`lastEncounter`) !== `A Choice to be Made`
 	);
 
-	const zone = $location`The Clumsiness Grove`
+	zone = $location`The Clumsiness Grove`
 	advMacroAA(
 		zone,
 		Macro.step(clumGrov),
 		() => get(`lastEncounter`) !== `A Test of Your Mettle`
 	);
 
-	const zone = $location`The Glacier of Jerks`
+	zone = $location`The Glacier of Jerks`
 	advMacroAA(
 		zone,
 		Macro.step(glacJerk),
@@ -211,14 +226,14 @@ function prepSecondBosses() {
 function killSecondBosses() {
 	useFamiliar($familiar`Red-Nosed Snapper`);
 	Snapper.trackPhylum($phylum`beast`)
-	const zone = $location`The Clumsiness Grove`
+	let zone = $location`The Clumsiness Grove`
 	advMacroAA(
 		zone,
 		Macro.if_(`monstername "The Bat in the Spats"`, Macro.step(spats)).step(clumGrov),
 		() => itemAmount($item`vanity stone`) < 1
 	);
 
-	const zone = $location`The Glacier of Jerks`
+	zone = $location`The Glacier of Jerks`
 	advMacroAA(
 		zone,
 		Macro.if_(`monstername "The Large-Bellied Snitch"`, Macro.step(snitch)).step(glacJerk),
@@ -226,7 +241,7 @@ function killSecondBosses() {
 	);
 
 	Snapper.trackPhylum($phylum`humanoid`);
-	const zone = $location`The Maelstrom of Lovers`
+	zone = $location`The Maelstrom of Lovers`
 	advMacroAA(
 		zone,
 		Macro.if_(`monstername "Thug 1 and Thug 2"`, Macro.step(thugs)).step(maelLove),
@@ -236,7 +251,7 @@ function killSecondBosses() {
 
 function killTheThing() {
 	have($familiar`Ms. Puck Man`) ? useFamiliar($familiar`Ms. Puck Man`) : useFamiliar($familiar`Levitating Potato`);
-	macro = Macro.step(defaultKill);
+	const macro = Macro.step(defaultKill);
 	macro.setAutoAttack();
 	visitUrl('suburbandis.php?action=altar&pwd');
 	runChoice(1);
